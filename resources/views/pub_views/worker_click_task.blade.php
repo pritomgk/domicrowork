@@ -1,15 +1,15 @@
 @extends('pub_views.layout.app')
 
 @section('title')
-worker click task
+posts
 @endsection
 
 @section('og_title')
-worker click task
+posts
 @endsection
 
 @section('twitter_title')
-worker click task
+posts
 @endsection
 
 @section('description')
@@ -39,22 +39,22 @@ worker click task
         display: none;
     } */
 
-    
+
 </style>
 
 @if (!empty($_GET['worker_id']))
-    
+
     <style>
-        
+
         .header-carousel, .owl-carousel, .owl-loaded, .owl-drag{
             display: none!important;
         }
-        
-        
+
+
         .navbar, .navbar-expand-lg, .navbar-light{
             background-color: #121212;
         }
-        
+
     </style>
 
 @endif
@@ -76,8 +76,8 @@ worker click task
         $('#countdown3').hide();
     });
 </script>
-@if (!empty($_GET['worker_id']))
-    
+@if (!empty($_GET['worker_id']) && session()->get('is_worker') == 1)
+
 <script>
     $(document).ready(function() {
         $("a:contains('Previous')").hide();
@@ -125,7 +125,7 @@ worker click task
                 }
             }, 1000);
         });
-    
+
 
         $('#next_button2').on('click', function() {
             let countdownValue = 5;
@@ -162,16 +162,16 @@ worker click task
                             $('#message').html("<p class='text-danger'>Error: " + error + "</p>");
                         }
                     });
-                    
+
                 }
             }, 1000);
         });
-    
 
 
-        
+
+
     });
-    
+
 
 </script>
 
@@ -186,14 +186,15 @@ worker click task
                 <div class="wow fadeInUp" data-wow-delay="0.2s">
                     @php
                         $i = 1;
+                        use Carbon\Carbon;
                     @endphp
                     @foreach ($posts as $click_task)
-                        
+
 
                         <div class="bg-light p-5 rounded h-100 wow fadeInUp mb-4" data-wow-delay="0.2s">
                             {{-- <h2 class="text-primary">Task {{ $i }}</h2> --}}
                             <input type="hidden" hidden id="task_number_{{ $i }}" value="{{ $click_task->task_id }}">
-                            <h3 class="text-primary">{{ $click_task->title }}</h3>
+                            <h3 class="text-primary">{{ $click_task->title }} {{ Carbon::now()->subDay() }} {{ date('Y-m-d H:m:s') }}</h3>
                             <p class="mb-4">{{ $click_task->description }}</p>
                         </div>
 
@@ -225,8 +226,8 @@ worker click task
 
                             @if (($page * $limit) < $totalPosts)
                                 <!-- Next Button (Increment Page) -->
-                                {{-- <a class="mx-auto btn btn-success text-white" href="{{ route('posts', ['worker_id' => session()->get('member_id'), 'page' => $page + 1]) }}">Next</a> --}}
-                                <a type="button" class="mx-auto btn btn-success text-white" onclick="location.reload();" id="refreshButton">Next</a>
+                                <a class="mx-auto btn btn-success text-white" href="{{ route('posts', ['worker_id' => session()->get('member_id'), 'page' => $page + 1]) }}">Next</a>
+                                {{-- <a type="button" class="mx-auto btn btn-success text-white" onclick="location.reload();" id="refreshButton">Next</a> --}}
                             @endif
                         </div>
                     @endif

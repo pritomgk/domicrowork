@@ -302,7 +302,7 @@ class MemberUserController extends Controller
                     return redirect(route('member_panel.signin'))->with('success', 'ইমেইল যাচাই সম্পন্ন হয়েছে, লগইন করুন..!');
                 }
             }else {
-                return redirect(route('member_panel.token_verify'))->with('error', 'Email can not be verified, please retry..!');
+                return redirect(route('member.token_verify'))->with('error', 'Email can not be verified, please retry..!');
             }
 
     }
@@ -639,7 +639,7 @@ class MemberUserController extends Controller
                     $passbook->receiver_member_id = $second_level_refer_member->member_id;
 
                     $passbook->sender_user_code = $member_info->user_code;
-    
+
                     $passbook->sender_member_id = $member_info->member_id;
 
                     $second_level_refer_member->balance = intval(round($second_level_refer_member->balance + $second_level_commission));
@@ -671,7 +671,7 @@ class MemberUserController extends Controller
                         $passbook->receiver_member_id = $third_level_refer_member->member_id;
 
                         $passbook->sender_user_code = $member_info->user_code;
-        
+
                         $passbook->sender_member_id = $member_info->member_id;
 
                         $third_level_refer_member->balance = intval(round($third_level_refer_member->balance + $third_level_commission));
@@ -701,7 +701,7 @@ class MemberUserController extends Controller
                             $passbook->receiver_member_id = $fourth_level_refer_member->member_id;
 
                             $passbook->sender_user_code = $member_info->user_code;
-            
+
                             $passbook->sender_member_id = $member_info->member_id;
 
                             $fourth_level_refer_member->balance = intval(round($fourth_level_refer_member->balance + $fourth_level_commission));
@@ -734,7 +734,7 @@ class MemberUserController extends Controller
                                 $passbook->receiver_member_id = $fifth_level_refer_member->member_id;
 
                                 $passbook->sender_user_code = $member_info->user_code;
-                
+
                                 $passbook->sender_member_id = $member_info->member_id;
 
                                 $fifth_level_refer_member->balance = intval(round($fifth_level_refer_member->balance + $fifth_level_commission));

@@ -240,7 +240,7 @@ Route::prefix('/admin_panel')->middleware('admin_panel')->group(function(){
 
     Route::get('/activate_task/{task_id?}', [TaskController::class, 'activate_task']
     )->name('admin_panel.activate_task');
-    
+
     Route::get('/confirm_tasks', [TaskController::class, 'admin_confirm_tasks']
     )->name('admin_panel.confirm_tasks');
 

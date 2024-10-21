@@ -218,7 +218,7 @@ class TaskController extends Controller
         $social_task->expire_date = $request->expire_date;
         $social_task->update();
 
-        return redirect()->back()->with('success', 'Task updated..!');
+        return redirect()->route('admin_panel.social_tasks')->with('success', 'Task updated..!');
 
     }
 
@@ -266,7 +266,7 @@ class TaskController extends Controller
         // $click_task->expire_date = $request->expire_date;
         $click_task->update();
 
-        return redirect()->back()->with('success', 'Task updated..!');
+        return redirect()->route('admin_panel.click_tasks')->with('success', 'Task updated..!');
 
     }
 
@@ -279,7 +279,7 @@ class TaskController extends Controller
 
     public function worker_click_task(Request $request){
 
-        if (empty(session()->get('member_id'))) {
+        if (empty(session()->get('member_id') or session()->get('is_worker') != 1)) {
 
             $posts = Task::where('sub_category_id', null)->where('status', 1)->paginate(3)->get();
 
@@ -301,10 +301,10 @@ class TaskController extends Controller
         // Fetch the next 3 posts starting from the offset
         $posts = Task::whereDoesntHave('worker', function ($query) use ($workerId) {
             $query->where('worker_id', $workerId)
-                    ->where(function ($q) {
-                        $q->where('task_assignments.created_at', '<', Carbon::now()->subDay());
-                    });
-        })->get();
+                ->where(function ($q) {
+                    $q->where('task_assignments.created_at', '<', Carbon::now()->subDay());
+                });
+            })->get();
 
         // Count the total number of posts (for "Next" link logic)
         $totalPosts = $posts->count();
