@@ -194,7 +194,7 @@ posts
                         <div class="bg-light p-5 rounded h-100 wow fadeInUp mb-4" data-wow-delay="0.2s">
                             {{-- <h2 class="text-primary">Task {{ $i }}</h2> --}}
                             <input type="hidden" hidden id="task_number_{{ $i }}" value="{{ $click_task->task_id }}">
-                            <h3 class="text-primary">{{ $click_task->title }} {{ Carbon::now()->subDay() }} {{ date('Y-m-d H:m:s') }}</h3>
+                            <h3 class="text-primary">{{ $click_task->title }}</h3>
                             <p class="mb-4">{{ $click_task->description }}</p>
                         </div>
 
