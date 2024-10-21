@@ -37,7 +37,7 @@ class Member_user extends Model
         'task_amount',
         'role_id',
         'approver_id',
-        'daily_income', 
+        'daily_income',
         'income_reset_date',
         'status',
         'comment',
@@ -79,7 +79,7 @@ class Member_user extends Model
 
     public function task(){
 
-        return $this->belongsToMany(Task::class, 'task_assignments', 'worker_id', 'task_id');
+        return $this->belongsToMany(Task::class, 'task_assignments', 'worker_id', 'task_id')->withPivot('created_at')->withPivot('updated_at');
 
     }
 

@@ -299,12 +299,18 @@ class TaskController extends Controller
         $workerId = session()->get('member_id');
 
         // Fetch the next 3 posts starting from the offset
-        $posts = Task::whereDoesntHave('worker', function ($query) use ($workerId) {
-            $query->where('worker_id', $workerId)
-                ->where(function ($q) {
-                    $q->where('task_assignments.created_at', '<', Carbon::now()->subDay());
-                });
-            })->get();
+        // $posts = Task::whereDoesntHave('worker', function ($query) use ($workerId) {
+        //     $query->where('worker_id', $workerId)
+        //         ->where(function ($q) {
+        //             $q->where('task_assignments.created_at', '<', Carbon::now()->subDay());
+        //         });
+        //     })->get();
+
+        $posts = Task::whereHas('worker', function ($query) {
+                $query->where('task_assignments.created_at', '<=', Carbon::now()->subDay());
+            })->orDoesntHave('worker')
+            ->where('sub_category_id', null)
+            ->get();
 
         // Count the total number of posts (for "Next" link logic)
         $totalPosts = $posts->count();
