@@ -29,13 +29,13 @@ class WithdrawController extends Controller
 
         $withdraw_request_member = new Withdraw();
 
-        $request->amount = intval($request->amount);
+        $amount = intval($request->amount);
 
         $member->balance = intval($member->balance);
 
-        $charge = ($request->amount/100) * intval(7);
+        $charge = ($amount/100) * intval(7);
 
-        if ($request->amount + $charge + 5 <= $member->balance) {
+        if ($amount + $charge + 5 <= $member->balance) {
 
             $withdraw_request_member->name = session()->get('name');
             $withdraw_request_member->member_id = $member->member_id;
@@ -44,9 +44,9 @@ class WithdrawController extends Controller
             $withdraw_request_member->user_code = session()->get('user_code');
 
 
-            $withdraw_request_member->amount = $request->amount;
+            $withdraw_request_member->amount = $amount;
 
-            $new_balance = $member->balance - ($request->amount + $charge);
+            $new_balance = $member->balance - ($amount + $charge);
 
             $member->balance = $new_balance;
 

@@ -106,6 +106,18 @@ Route::prefix('/admin_panel')->middleware('admin_panel')->group(function(){
     )->name('admin_panel.update_admin_info')->middleware('admin');
 
 
+    // member panel users
+
+    Route::get('/member_users', [AdminUserController::class, 'member_users']
+    )->name('admin_panel.member_users')->middleware('admin');
+
+    // Route::get('/update_admin/{admin_id?}', [AdminUserController::class, 'update_admin']
+    // )->name('admin_panel.update_admin')->middleware('admin');
+
+    // Route::post('/update_admin_info', [AdminUserController::class, 'update_admin_info']
+    // )->name('admin_panel.update_admin_info')->middleware('admin');
+
+
 
     // deposit
 

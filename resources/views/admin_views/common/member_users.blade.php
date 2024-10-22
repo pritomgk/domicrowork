@@ -40,26 +40,36 @@ Member Users
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Position</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>User Code</th>
                                         <th>Parent</th>
+                                        <th>Balance</th>
+                                        <th>Deposit</th>
+                                        <th>Package</th>
                                         <th>Status</th>
                                         <th>Apply Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($admin_users as $admin_user)
+                                    @foreach ($member_users as $member_user)
                                         <form action="{{ route('admin_panel.update_admin') }}" method="POST">
 
                                             @csrf
 
                                             <tr>
-                                                <td>{{ $admin_user->name }}</td>
-                                                <td>{{ $admin_user->role->role_title }}</td>
-                                                <td>{{ !empty($admin_user->parent->name)? $admin_user->parent->name : '' }}</td>
+                                                <td>{{ $member_user->name }}</td>
+                                                <td>{{ $member_user->email }}</td>
+                                                <td>{{ $member_user->phone }}</td>
+                                                <td>{{ $member_user->user_code }}</td>
+                                                <td>{{ !empty($member_user->parent->name)? $member_user->parent->name : '' }}</td>
+                                                <td>{{ $member_user->balance }}</td>
+                                                <td>{{ $member_user->deposit_balance }}</td>
+                                                <td>{{ !empty($member_user->package->title)? $member_user->package->title : 'None' }}</td>
                                                 <td>
                                                     <select disabled class="form-control" name="status" id="">
-                                                        @if ($admin_user->status == 1)
+                                                        @if ($member_user->status == 1)
                                                             <option value="1">Active</option>
                                                             {{-- <option value="0">Deactive</option> --}}
                                                         @else
@@ -68,11 +78,11 @@ Member Users
                                                         @endif
                                                     </select>
                                                 </td>
-                                                <td>{{ $admin_user->created_at }}</td>
+                                                <td>{{ $member_user->created_at }}</td>
                                                 <td>
-                                                    {{-- <input type="hidden" hidden name="admin_id" value="{{ $admin_user->admin_id }}"> --}}
+                                                    {{-- <input type="hidden" hidden name="member_id" value="{{ $member_user->member_id }}"> --}}
                                                     {{-- <input type="submit" class="btn btn-success text-white" value="Update"> --}}
-                                                    <a class="btn btn-success text-white" href="{{ route('admin_panel.update_admin', ['admin_id'=>$admin_user->admin_id]) }}">Update</a>
+                                                    {{-- <a class="btn btn-success text-white" href="{{ route('admin_panel.update_member', ['member_id'=>$member_user->member_id]) }}">Update</a> --}}
                                                 </td>
                                             </tr>
 

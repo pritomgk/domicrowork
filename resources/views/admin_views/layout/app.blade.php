@@ -295,6 +295,7 @@
                                     <ul>
                                         {{-- <li><a href="{{ route('admin_panel.admin_users') }}">Member Users </a></li> --}}
                                         {{-- <li><a href="{{ route('admin_panel.member_package_requests') }}">Worker Request</a></li> --}}
+                                        <li><a href="{{ route('admin_panel.member_users') }}">Member Users</a></li>
                                         <li><a href="{{ route('admin_panel.deposit_requests') }}">Deposit Requests</a></li>
                                         <li><a href="{{ route('admin_panel.withdraw_approvals') }}">Withdraw Requests</a></li>
                                     </ul>

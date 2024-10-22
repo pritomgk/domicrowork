@@ -59,7 +59,17 @@ Package List
                                                 <td>{{ $package->validity }}</td>
                                                 <td>{{ $package->price }}</td>
                                                 <td>{{ $package->limit }}</td>
-                                                <td>{{ $package->status }}</td>
+                                                <td>
+                                                    <select name="status" class="js-example-basic-single select2 form-control">
+                                                        @if ($package->status == 1)
+                                                            <option value="1">Active</option>
+                                                            <option value="0">Deactive</option>
+                                                        @else
+                                                            <option value="0">Deactive</option>
+                                                            <option value="1">Active</option>
+                                                        @endif
+                                                    </select>
+                                                </td>
                                                 <td>{{ $package->created_at }}</td>
                                                 <td>
                                                     <a class="btn btn-success text-white" href="{{ route('admin_panel.update_package', ['package_id'=>$package->package_id]) }}">Update</a>

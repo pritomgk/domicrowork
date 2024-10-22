@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SendMail;
 use App\Models\Admin_user;
+use App\Models\Member_user;
 use App\Models\Passbook;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -386,7 +387,14 @@ class AdminUserController extends Controller
 
     }
 
-    
+
+    public function member_users(){
+        $member_users = Member_user::with('parent', 'package')->where('user_code', '!=', '1020241001')->get();
+
+        return view('admin_views.common.member_users', compact('member_users'));
+    }
+
+
     public function total_passbooks(){
 
         $total_passbooks = Passbook::all();
