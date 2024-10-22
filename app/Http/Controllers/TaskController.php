@@ -307,7 +307,7 @@ class TaskController extends Controller
         //     })->get();
 
         $posts = Task::whereHas('worker', function ($query) {
-                $query->where('task_assignments.created_at', '<=', Carbon::now()->subDay());
+                $query->where('task_assignments.created_at', '<', Carbon::now()->subDay());
             })->orDoesntHave('worker')
             ->where('sub_category_id', null)
             ->get();

@@ -6,9 +6,9 @@ use App\Mail\SendMail;
 use App\Models\Admin_user;
 use App\Models\Passbook;
 use App\Models\Role;
-use Hash;
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdminUserController extends Controller
 {
@@ -386,6 +386,7 @@ class AdminUserController extends Controller
 
     }
 
+    
     public function total_passbooks(){
 
         $total_passbooks = Passbook::all();

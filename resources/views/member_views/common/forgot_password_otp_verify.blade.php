@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Do Micro Work - Sign In</title>
+    <title>Do Micro Work - OTP</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -46,7 +46,7 @@
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <form action="{{ route('check_login') }}" method="post">
+                    <form action="{{ route('member_otp_verification_submit') }}" method="post">
 
                         @if (session()->has('error'))
                             <p class="mb-0 alert alert-danger">{{ session()->get('error') }}</p>
@@ -56,56 +56,22 @@
                         @endif
 
                         @csrf
-
-                        @php
-                            if (isset($_COOKIE['email']) && isset($_COOKIE['password'])) {
-                                $cookie_email = $_COOKIE['email'];
-                                $cookie_password = $_COOKIE['password'];
-                                $cookie_set = 'checked';
-                            }else {
-                                $cookie_email = '';
-                                $cookie_password = '';
-                                $cookie_set = '';
-                            }
-                        @endphp
-
                         <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                             <div class="text-center align-items-center justify-content-between mb-3">
                                 <a href="{{ route('home') }}" class="">
                                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Do Micro Work</h3>
+                                    <p class="text-warning">Please check spam if you do not get mail in inbox..</p>
                                 </a>
-                                <h3>Sign In</h3>
+                                <h3>OTP</h3>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" name="email" required class="form-control" id="floatingInput" value="{{ $cookie_email }}" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                                @error('email')
+                                <input type="text" name="password_reset_token" class="form-control" id="floatingInput" placeholder="******">
+                                <label for="floatingInput">Provide the OTP</label>
+                                @error('password_reset_token')
                                     <p class="mb-0 alert alert-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" name="password" required class="form-control" id="floatingPassword" value="{{ $cookie_password }}" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
-                                @error('password')
-                                    <p class="mb-0 alert alert-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            {{-- <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" name="is_client" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Log in as <b>Client</b></label>
-                                </div>
-                                <a href="">Forgot Password</a>
-                            </div> --}}
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" name="rememberme" class="form-check-input" id="exampleCheck2" checked>
-                                    <label class="form-check-label" for="exampleCheck2">Remember me</label>
-                                </div>
-                                <a href="{{ route('member_forgot_password') }}">Forgot Password</a>
-                            </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                            <p class="text-center mb-0">Don't have an Account? <a href="{{ route('member_panel.signup') }}">Sign Up</a></p>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>
                         </div>
                     </form>
                 </div>

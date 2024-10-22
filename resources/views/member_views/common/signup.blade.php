@@ -122,7 +122,7 @@
                                     {{-- <input type="radio" name="terms_condition" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Check me out</label> --}}
                                 </div>
-                                <a href="">Forgot Password</a>
+                                <a href="{{ route('member_forgot_password') }}">Forgot Password</a>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
                             <p class="text-center mb-0">Already have an Account? <a href="{{ route('member_panel.signin') }}">Sign In</a></p>
@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        
+
         <!-- Sign Up End -->
     </div>
 
