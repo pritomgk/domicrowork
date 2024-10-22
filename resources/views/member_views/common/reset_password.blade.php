@@ -60,7 +60,7 @@
                             <div class="text-center align-items-center justify-content-between mb-3">
                                 <a href="{{ route('home') }}" class="">
                                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Do Micro Work</h3>
-                                    <p class="text-warning">Please check spam if you do not get mail in inbox..</p>
+                                    {{-- <p class="text-warning">Please check spam if you do not get mail in inbox..</p> --}}
                                 </a>
                                 <h3>Reset Password</h3>
                             </div>
@@ -72,7 +72,7 @@
                                 @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="confirm_password" name="confirm_password" class="form-control" id="floatingInput1" placeholder="Password">
+                                <input type="password" name="confirm_password" class="form-control" id="floatingInput1" placeholder="Password">
                                 <label for="floatingInput1">Confirm Password</label>
                                 @error('confirm_password')
                                     <p class="mb-0 alert alert-danger">{{ $message }}</p>
