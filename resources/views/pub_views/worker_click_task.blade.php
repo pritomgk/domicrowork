@@ -76,6 +76,7 @@ posts
         $('#countdown3').hide();
     });
 </script>
+
 @if (!empty($_GET['worker_id']) && session()->get('is_worker') == 1)
 
 <script>
@@ -181,12 +182,14 @@ posts
 <!-- Contact Start -->
 <div class="container-fluid contact py-5">
     <div class="container py-5">
-        <div class="row g-5" id="active_package">
+        <div class="row g-5 mt-3" id="active_package">
             <div class="col-xl-6 mx-auto text-center">
+                @if (!empty($_GET['worker_id']) && session()->get('is_worker') == 1)
+                    <h4 class="text-warning"> Scroll down and click 1, 2 and 3 then click 'Next' button..</h4>
+                @endif
                 <div class="wow fadeInUp" data-wow-delay="0.2s">
                     @php
                         $i = 1;
-                        use Carbon\Carbon;
                     @endphp
                     @foreach ($posts as $click_task)
 
@@ -195,7 +198,7 @@ posts
                             {{-- <h2 class="text-primary">Task {{ $i }}</h2> --}}
                             <input type="hidden" hidden id="task_number_{{ $i }}" value="{{ $click_task->task_id }}">
                             <h3 class="text-primary">{{ $click_task->title }}</h3>
-                            <p class="mb-4">{{ $click_task->description }}</p>
+                            <div class="mb-4">{{ $click_task->description }}</div>
                         </div>
 
                         <h2 id="countdown"></h2>
