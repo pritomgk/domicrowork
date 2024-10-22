@@ -59,7 +59,7 @@
                         <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                             <div class="text-center align-items-center justify-content-between mb-3">
                                 <a href="{{ route('home') }}" class="">
-                                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Do Micro Work</h3>
+                                    <h3 class="text-primary">Do Micro Work</h3>
                                     {{-- <p class="text-warning">Please check spam if you do not get mail in inbox..</p> --}}
                                 </a>
                                 <h3>Reset Password</h3>
