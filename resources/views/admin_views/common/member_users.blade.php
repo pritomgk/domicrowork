@@ -82,7 +82,7 @@ Member Users
                                                 <td>
                                                     {{-- <input type="hidden" hidden name="member_id" value="{{ $member_user->member_id }}"> --}}
                                                     {{-- <input type="submit" class="btn btn-success text-white" value="Update"> --}}
-                                                    {{-- <a class="btn btn-success text-white" href="{{ route('admin_panel.update_member', ['member_id'=>$member_user->member_id]) }}">Update</a> --}}
+                                                    <a class="btn btn-success text-white" href="{{ route('admin_panel.member_user_details', ['member_id'=>$member_user->member_id]) }}">View</a>
                                                 </td>
                                             </tr>
 

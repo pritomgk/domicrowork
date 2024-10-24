@@ -65,9 +65,15 @@ class Member_user extends Model
 
     }
 
-    public function first_level_refer(){
+    public function children(){
 
         return $this->hasMany(Member_user::class, 'parent_id');
+
+    }
+
+    public function first_level_refer(){
+
+        return $this->children();
 
     }
 

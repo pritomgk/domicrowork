@@ -402,19 +402,10 @@ class AdminUserController extends Controller
 
         }
 
-        $member_user = Member_user::with('parent', 'package', 'first_level_refer', 'second_level_refer', 'third_level_refer', 'fourth_level_refer', 'fifth_level_refer')->find($member_id);
+        $member_user_details = Member_user::with('parent', 'package', 'first_level_refer', 'second_level_refer', 'third_level_refer', 'fourth_level_refer', 'fifth_level_refer')->find($member_id);
 
-        // $first_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
+        return view('admin_views.common.member_user_details', compact('member_user_details'));
 
-        // $second_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
-
-        // $third_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
-
-        // $fourth_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
-
-        // $fifth_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
-
-        return view('admin_views.common.member_user_details', compact('member_users'));
     }
 
 

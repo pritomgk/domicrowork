@@ -111,7 +111,7 @@ Route::prefix('/admin_panel')->middleware('admin_panel')->group(function(){
     Route::get('/member_users', [AdminUserController::class, 'member_users']
     )->name('admin_panel.member_users')->middleware('admin');
 
-    Route::get('/member_user_details', [AdminUserController::class, 'member_user_details']
+    Route::get('/member_user_details/{member_id}', [AdminUserController::class, 'member_user_details']
     )->name('admin_panel.member_user_details')->middleware('admin');
 
     Route::post('/member_user_details_info', [AdminUserController::class, 'member_user_details_info']

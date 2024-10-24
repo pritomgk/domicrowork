@@ -173,7 +173,7 @@ Member User Details
                             <div class="form-group row">
                                 <label class="col-form-label col-md-2">Approved By</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" readonly value="{{ $member_user_details->approver->name }}" />
+                                    <input type="text" class="form-control" readonly value="{{ !empty($member_user_details->approver->name) ? $member_user_details->approver->name : '' }}" />
                                 </div>
                                 {{-- @error('approver_id')
                                     <p class="mb-0 alert alert-danger">{{ $message }}</p>
