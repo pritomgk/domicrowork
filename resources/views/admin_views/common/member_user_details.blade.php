@@ -103,7 +103,7 @@ Member User Details
                             <div class="form-group row">
                                 <label class="col-form-label col-md-2">Package</label>
                                 <div class="col-md-8">
-                                    <input type="text" name="package_id" class="form-control" readonly value="{{ $member_user_details->package_id }}" />
+                                    <input type="text" name="package_id" class="form-control" readonly value="{{ !empty($member_user_details->package->title) ? $member_user_details->package->title : 'None' }}" />
                                 </div>
                                 @error('package_id')
                                     <p class="mb-0 alert alert-danger">{{ $message }}</p>

@@ -67,7 +67,7 @@ class Member_user extends Model
 
     public function children(){
 
-        return $this->hasMany(Member_user::class, 'parent_id');
+        return $this->hasMany(Member_user::class, 'parent_id', 'member_id');
 
     }
 
