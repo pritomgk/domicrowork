@@ -65,6 +65,32 @@ class Member_user extends Model
 
     }
 
+    public function first_level_refer(){
+
+        return $this->hasMany(Member_user::class, 'parent_id');
+
+    }
+
+    public function second_level_refer()
+    {
+        return $this->children()->with('children');
+    }
+
+    public function third_level_refer()
+    {
+        return $this->children()->with('children.children');
+    }
+
+    public function fourth_level_refer()
+    {
+        return $this->children()->with('children.children.children');
+    }
+
+    public function fifth_level_refer()
+    {
+        return $this->children()->with('children.children.children.children');
+    }
+
     public function role(){
 
         return $this->belongsTo(Role::class, 'role_id', 'role_id');

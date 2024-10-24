@@ -394,6 +394,48 @@ class AdminUserController extends Controller
         return view('admin_views.common.member_users', compact('member_users'));
     }
 
+    public function member_user_details($member_id){
+
+        if (empty($member_id)) {
+
+            return redirect()->back()->with('error','Select a member..!');
+
+        }
+
+        $member_user = Member_user::with('parent', 'package', 'first_level_refer', 'second_level_refer', 'third_level_refer', 'fourth_level_refer', 'fifth_level_refer')->find($member_id);
+
+        // $first_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
+
+        // $second_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
+
+        // $third_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
+
+        // $fourth_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
+
+        // $fifth_level_refer = Member_user::where('parent_id', $member_user->member_id)->get();
+
+        return view('admin_views.common.member_user_details', compact('member_users'));
+    }
+
+
+    public function member_user_details_info(Request $request){
+
+        // $member_user_details_info = Member_user::find($request->member_id);
+
+        // if ($member_user_details_info->approver_id == null) {
+
+        //     $member_user_details_info->approver_id = session()->get('admin_id');
+
+        // }
+
+        // $member_user_details_info->status = $request->status;
+
+        // $member_user_details_info->update();
+
+        return redirect()->back()->with('success', 'User Updated..!');
+
+    }
+
 
     public function total_passbooks(){
 
