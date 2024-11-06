@@ -343,6 +343,10 @@ class TaskController extends Controller
 
             $task_price_rate = 1.5;
 
+        }elseif($member->package->package_id == 5){
+
+            $task_price_rate = 1.5;
+
         }
 
         $dailyIncomeLimit = $member->package->task_amount;

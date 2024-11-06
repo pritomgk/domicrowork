@@ -7,6 +7,7 @@ use App\Models\Admin_user;
 use App\Models\Buy_package;
 use App\Models\Deposit_balance;
 use App\Models\Member_user;
+use App\Models\Notice;
 use App\Models\Package;
 use App\Models\Passbook;
 use App\Models\Payment_method;
@@ -62,7 +63,9 @@ class MemberUserController extends Controller
 
         $member_refers = Member_user::where('parent_user_code', session()->get('user_code'))->get()->count();
 
-        return view('member_views.common.client_dashboard', compact('member_dashboard', 'member_refers'));
+        $last_notice = Notice::where('status', 1)->latest()->first();
+
+        return view('member_views.common.client_dashboard', compact('member_dashboard', 'member_refers', 'last_notice'));
     }
 
 

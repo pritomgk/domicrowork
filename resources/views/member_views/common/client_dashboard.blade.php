@@ -72,6 +72,56 @@ client dashboard
     </div>
 </div>
 
+<div class="row g-4 mx-4" style="margin-top: 20px;">
+    <div class="col-sm-6 col-xl-3">
+        <a href="https://t.me/@domicrowork1" target="_blank">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fab fa-telegram fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Support 1</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a href="https://t.me/@domicrowork1" target="_blank">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fab fa-telegram fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Support 2</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a href="https://t.me/@domicrowork" target="_blank">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fab fa-telegram fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Support 3</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{-- <div class="col-sm-6 col-xl-3">
+        <a href="https://t.me/@domicrowork1" target="_blank">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-telegram fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Support 4</p>
+                    <h6 class="mb-0">{{ $member_dashboard->withdraws }}</h6>
+                </div>
+            </div>
+        </a>
+    </div> --}}
+</div>
+
+@if (!empty($last_notice))
+    <div class="w-100">
+        <marquee class="text-warning bg-dark" behavior="" direction=""><b>{{ $last_notice->title }}</b></marquee>
+    </div>
+@endif
+
 
 <div class="col-12 col-md-12 col-lg-12 mt-4">
     <div class="bg-light rounded h-100 p-4">
