@@ -345,7 +345,7 @@ class TaskController extends Controller
 
         }elseif($member->package->package_id == 5){
 
-            $task_price_rate = 1.5;
+            $task_price_rate = 1;
 
         }
 
